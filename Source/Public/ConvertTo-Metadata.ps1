@@ -91,9 +91,10 @@ function ConvertTo-Metadata {
             $InputObject -is [Int32] -or
             $InputObject -is [Int64] -or
             $InputObject -is [Double] -or
-            $InputObject -is [Decimal] -or
             $InputObject -is [Byte] ) {
             "$InputObject"
+        } elseif ($InputObject -is [Decimal]) {
+            "${InputObject}d"
         } elseif ($InputObject -is [String]) {
             "'{0}'" -f $InputObject.ToString().Replace("'", "''")
         } elseif ($InputObject -is [Collections.IDictionary]) {
